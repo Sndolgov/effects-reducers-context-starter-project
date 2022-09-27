@@ -1,8 +1,9 @@
-import React, {useEffect, useReducer, useState} from "react";
+import React, {useContext, useEffect, useReducer, useState} from "react";
 
 import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
 import Button from "../UI/Button/Button";
+import AuthContext from "../../store/AuthContext";
 
 const MIN_PASSWORD_LENGTH = 7
 const USER_INPUT = 'USER_INPUT'
@@ -45,7 +46,7 @@ const passwordReducer = (prevState, action) => {
     }
 };
 
-const Login = (props) => {
+const Login = () => {
     // const [inputEmail, setInputEmail] = useState("");
     // const [emailIsValid, setEmailIsValid] = useState();
     // const [inputPassword, setInputPassword] = useState("");
@@ -58,13 +59,15 @@ const Login = (props) => {
     // const {isValid: isEmailValid} = emailState
     // const {isValid: isPasswordValid} = passwordState
 
+    const ctx = useContext(AuthContext)
+
     useEffect(() => {
         const timer = setTimeout(() => {
-            console.log('setFormIsValid')
+            // console.log('setFormIsValid')
             setFormIsValid(passwordState.isValid && emailState.isValid)
         }, 1000)
         return () => {
-            console.log('clearing')
+            // console.log('clearing')
             clearTimeout(timer)
         }
 
@@ -96,7 +99,7 @@ const Login = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        props.onLogin(emailState.value, passwordState.value);
+        ctx.onLogin(emailState.value, passwordState.value);
     };
 
     return (
@@ -118,10 +121,10 @@ const Login = (props) => {
                 </div>
                 <div
                     className={`${styles.control} ${
-                        passwordState.isValid ? styles.invalid : ""
+                        passwordState.isValid === false ? styles.invalid : ""
                     }`}
                 >
-                    <label htmlFor="password">Пароль</label>
+                    <label htmlFor="password">Password</label>
                     <input
                         type="password"
                         id="password"

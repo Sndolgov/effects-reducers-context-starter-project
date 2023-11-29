@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
 
-import Login from "./components/Login/Login";
-import Home from "./components/Home/Home";
 import MainHeader from "./components/MainHeader/MainHeader";
 import AuthContext from "./store/AuthContext";
+import CustomTable from "./components/UI/Table/CustomTable";
+import Sheet from "./components/UI/Table/Sheet";
 
 function App() {
     // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,14 +29,15 @@ function App() {
 
     return (
         <>
-            {/*<AuthContext.Provider value={{*/}
+            {/*{<AuthContext.Provider value={{
             isLoggedIn: isLoggedIn,
             onLogout: logoutHandler
-            }}>
+            }}>*/}
             <MainHeader/>
             <main>
-                {!ctx.loggedIn && <Login/>}
-                {ctx.loggedIn && <Home/>}
+                {/*{!ctx.loggedIn && <Login/>}*/}
+                {/*{ctx.loggedIn && <Home/>}*/}
+                <Sheet/>
             </main>
             {/* </AuthContext.Provider>*/}
         </>

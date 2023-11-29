@@ -1,0 +1,13 @@
+.row {
+    display: flex;
+    justify-content: space-around;
+    font-size:15px;
+}
+
+.data-row {
+    font-weight:300
+}
+
+.header-row {
+    font-weight: 900;
+}

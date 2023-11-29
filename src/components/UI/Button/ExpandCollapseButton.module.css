@@ -1,0 +1,13 @@
+
+.image-button {
+    /*width: 100px;*/
+    /*height: 100px;*/
+    background: none;
+    border: none;
+}
+
+.image-button img{
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: width 1s ease-in, height 1s ease-in;
+}

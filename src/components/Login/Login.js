@@ -1,14 +1,18 @@
-import React, {useContext, useEffect, useReducer, useRef, useState} from "react";
+import React, {useCallback, useContext, useEffect, useReducer, useRef, useState} from "react";
 
 import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
 import Button from "../UI/Button/Button";
 import Input from "../UI/Input/Input";
 import AuthContext from "../../store/AuthContext";
+import useRequest from "../../hooks/use-request";
+import {LOGIN_URL, loginRequest} from "../../api/API";
 
-const MIN_PASSWORD_LENGTH = 7
+const MIN_PASSWORD_LENGTH = 3
 const USER_INPUT = 'USER_INPUT'
 const INPUT_BLUR = 'INPUT_BLUR'
+// const
+
 
 const emailReducer = (prevState, action) => {
     if (action.type === USER_INPUT) {
@@ -32,13 +36,13 @@ const passwordReducer = (prevState, action) => {
     if (action.type === USER_INPUT) {
         return {
             value: action.value,
-            isValid: action.value.trim().length > MIN_PASSWORD_LENGTH
+            isValid: action.value.trim().length >= MIN_PASSWORD_LENGTH
         }
     }
     if (action.type === INPUT_BLUR) {
         return {
             value: prevState.value,
-            isValid: prevState.value.trim().length > MIN_PASSWORD_LENGTH
+            isValid: prevState.value.trim().length >= MIN_PASSWORD_LENGTH
         }
     }
     return {
@@ -101,19 +105,31 @@ const Login = () => {
 
     };
 
-    const submitHandler = (event) => {
+    const onLoginComplete = useCallback((data) => {
+        console.log("Login completed")
+        console.log(data)
+    }, [])
+
+    const errorHandler = useCallback((errorMessage) => {
+        console.log('errorHandler')
+        console.log(errorMessage)
+    }, [])
+
+    const {sendHttpRequest: sendLoginRequest} = useRequest(onLoginComplete, errorHandler)
+
+
+    const submitHandler = async (event) => {
         event.preventDefault();
         if (formIsValid) {
-            ctx.onLogin(emailState.value, passwordState.value);
-        }
-        else if (!emailState.isValid) {
+            // ctx.onLogin(emailState.value, passwordState.value);
+            const credentials = {auth: {username: emailState.value, password: passwordState.value}}
+            const result = await sendLoginRequest(loginRequest(credentials, LOGIN_URL))
+        } else if (!emailState.isValid) {
             emailInputRef.current.focus()
-        }
-        else if (!passwordState.isValid) {
+        } else if (!passwordState.isValid) {
             passwordInputRef.current.focus()
         }
     };
-
     return (
         <Card className={styles.login}>
             <form onSubmit={submitHandler}>

@@ -1,0 +1,14 @@
+.button-cell {
+    padding-top: 4px;
+    background:#FFFFFF;
+    text-align:center;
+    vertical-align:middle;
+    width: 20%;
+    border-top: 0.5px solid lightgray;
+    border-bottom: 0.5px solid lightgray;
+}
+
+.button-cell button{
+    padding-top: 2px;
+    background:#FFFFFF;
+}

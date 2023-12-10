@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    collapsed: true
+    collapsed: true,
+    invalidCells: []
 }
 
 const tableSlice = createSlice({
@@ -10,6 +11,15 @@ const tableSlice = createSlice({
     reducers: {
         setCollapse(state, action) {
             state.collapsed = action.payload
+        },
+        addInvalidCell(state, action) {
+            state.invalidCells.push(`${action.payload}`)
+        },
+        removeInvalidCell(state, action) {
+            const index = state.invalidCells.indexOf(action.payload);
+            if (index !== -1) {
+                state.invalidCells.splice(index, 1);
+            }
         }
     }
 })

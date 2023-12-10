@@ -9,7 +9,7 @@ import {Provider} from "react-redux";
 
 
 ReactDOM.render(<Provider store={store}>
-    {/*<AuthContextProvider>*/}
+    <AuthContextProvider>
         <App/>
-    {/*</AuthContextProvider>*/}
+    </AuthContextProvider>
 </Provider>, document.getElementById('root'));

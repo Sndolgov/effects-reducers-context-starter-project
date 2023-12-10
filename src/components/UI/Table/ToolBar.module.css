@@ -1,0 +1,16 @@
+.tool-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.default-row{
+    width: 96%;
+    margin: 25% 2% 0 2%;
+}
+
+.buttons-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10%;
+}

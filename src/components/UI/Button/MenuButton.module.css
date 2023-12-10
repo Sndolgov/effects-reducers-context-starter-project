@@ -1,23 +1,20 @@
-
-.image-button {
-    /*width: 100px;*/
-    /*height: 100px;*/
+.menu-button {
     background: none;
     border: none;
 }
 
-.image-button img{
-    width: 1.5rem;
-    height: 1.5rem;
+.menu-button img{
+    /*width: 1.2rem;*/
+    /*height: 1.2rem;*/
     transition: width 1s ease-in, height 1s ease-in;
 }
 
-.image-button img:hover {
+.menu-button img:hover {
     /*box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);*/
     box-shadow: 0 3px 4px 0 rgba(0,0,0,0.40);
 }
 
-.image-button img:active {
+.menu-button img:active {
     box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
     transform: translate(1px);
 }

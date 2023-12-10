@@ -24,7 +24,7 @@ const TableTitle = (props) => {
                 <ArrowButton downPosition={!collapsed} onClick={() => onClick()}/>
                 <span className={styles["title-text"]}>{props.text}</span>
             </div>
-            {collapsed && <div className={styles['title-children']}>
+            {!collapsed && <div className={styles['title-children']}>
                 {/*<TitlePanel/>*/}
                 {props.children}
             </div>}

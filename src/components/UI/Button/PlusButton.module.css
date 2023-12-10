@@ -1,0 +1,10 @@
+.plus-button {
+    background: none;
+    border: none;
+}
+
+.plus-button img{
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: width 1s ease-in, height 1s ease-in;
+}

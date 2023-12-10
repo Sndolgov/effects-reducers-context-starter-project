@@ -2,7 +2,7 @@ import collapsed from '../../../asserts/collapse.jpg'
 import expaned from '../../../asserts/expand.jpg'
 import styles from './ExpandCollapseButton.module.css'
 const ExpandCollapseButton = (props) => {
-    const image = props.collapsed ? collapsed : expaned
+    const image = props.collapsed ? expaned : collapsed
 
     const classes = `${styles['image-button']}`
 
